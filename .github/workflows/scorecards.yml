@@ -2,7 +2,11 @@ name: OpenSSF Scorecard
 
 on:
   push:
+    branches:
+        - main
   pull_request:
+     branches:
+        - main
   schedule:
     - cron: '0 0 * * 0'  # every Sunday
 
@@ -24,7 +28,7 @@ jobs:
           results_format: sarif
 
       - name: "Upload SARIF file"
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: results.sarif
 
